@@ -8,9 +8,8 @@
 void execute(char *argv[], int * hasIn, char * input, int * hasOut, char * output) {
 	char *pathname = argv[0];
 	char *envp[] = {NULL};
-	pid_t pid = fork();
 		
-	if (pid == 0) {
+	if (!fork()) {
 		int fd2,fd3;
 		if (*hasIn == 1) {
 			int fd = open(input, O_RDONLY);

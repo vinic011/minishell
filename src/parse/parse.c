@@ -4,11 +4,14 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-char** parser(char* string, int * hasIn, char * input, int * hasOut, char * output) {
+char** parseCommand(char* string, int * hasIn, char * input, int * hasOut, char * output) {
 
 	char **tokens = malloc(MAX_TOKENS * sizeof(char*));
 	char *token = strtok(string, DELIMITER);
 	int count = 0;
+
+	*hasIn = 0;
+	*hasOut = 0;
 	
 	for (int i = 0; i < MAX_TOKENS; i++) {
 		tokens[i] = malloc(MAX_TOKEN_LEN * sizeof(char));
@@ -40,5 +43,20 @@ char** parser(char* string, int * hasIn, char * input, int * hasOut, char * outp
 	}
 	*/
 
+	return tokens;
+}
+
+char** parseString(char * string, int * nCommands) {
+	*nCommands = 0;
+	char **tokens = malloc(MAX_COM * sizeof(char*));
+	for (int i = 0; i < MAX_COM; i++) {
+		tokens[i] = malloc(19*sizeof(char));
+	}
+	char *token = strtok(string, PIPE);
+	while(token != NULL && *nCommands < MAX_COM) {
+		strcpy(tokens[*nCommands], token);	
+		*nCommands = *nCommands + 1;
+		token = strtok(NULL, PIPE);
+	}
 	return tokens;
 }
