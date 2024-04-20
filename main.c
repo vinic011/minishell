@@ -8,7 +8,6 @@
 int main () {
 	while (1) {
 		char string[MAX_TOKENS * MAX_TOKEN_LEN];
-		//if (!fork()) {
 		printf("cmd>");
 		
 		gets(string);
@@ -31,7 +30,7 @@ int main () {
 			char** argv = parseCommand(commands[i], hasIn, input, hasOut, output);
 			execute(argv, hasIn, input, hasOut, output, pipes, i, nPipes);
 		}
-		closePipes(pipes, nPipes);
+		//closePipes(pipes, nPipes);
 		wait(NULL);
 		
 	}
