@@ -30,8 +30,6 @@ int main () {
 			char** argv = parseCommand(commands[i], hasIn, input, hasOut, output);
 			execute(argv, hasIn, input, hasOut, output, pipes, i, nPipes);
 		}
-		//closePipes(pipes, nPipes);
-		wait(NULL);
 		
 	}
 

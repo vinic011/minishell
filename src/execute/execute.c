@@ -14,11 +14,12 @@ void execute(char *argv[],
 	char *envp[] = {NULL};
 		
 	if ((i < nPipes) && (nPipes > 0)) {
-		//printf("n pipes %d, current i %d\n", nPipes, i);
 		pipe(pipes[i]);
 	}
 
-	if (!fork()) {
+    pid_t pid = fork();
+
+	if (pid == 0) {
 		if ((i < nPipes) && (nPipes > 0)) {
 			close(pipes[i][0]);
 		}
@@ -47,13 +48,15 @@ void execute(char *argv[],
 		
 		if (*hasIn == 1) {close(fd2);}
 		if (*hasOut == 1) {close(fd3);}
-			
 	} 
 
 	if ((i > 0) && (nPipes > 0)) {
 		close(pipes[i - 1][0]);	
 		close(pipes[i - 1][1]);	
 	}
+    if (i == nPipes) {
+        waitpid(pid, NULL, 0);
+    }
 }
 
 void closePipes(int *pipes[], int numPipes) {
