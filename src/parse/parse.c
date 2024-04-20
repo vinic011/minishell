@@ -50,7 +50,7 @@ char** parseString(char * string, int * nCommands) {
 	*nCommands = 0;
 	char **tokens = malloc(MAX_COM * sizeof(char*));
 	for (int i = 0; i < MAX_COM; i++) {
-		tokens[i] = malloc(19*sizeof(char));
+		tokens[i] = malloc(MAX_COM*sizeof(char));
 	}
 	char *token = strtok(string, PIPE);
 	while(token != NULL && *nCommands < MAX_COM) {
