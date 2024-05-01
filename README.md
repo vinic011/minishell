@@ -1,5 +1,5 @@
 # Minishell Project
-### CSC-33 Project - by Vinicius Pereira
+### CSC-33 Operating Systems - by Vinicius Pereira
 
 ## Overview
 Minishell is a lightweight command-line interface designed to mimic the functionality of a Unix shell. Developed by Vinicius Pereira for the CSC-33 project, this shell provides users with a familiar environment for executing commands and managing processes.
@@ -11,4 +11,21 @@ Minishell is a lightweight command-line interface designed to mimic the function
 - Pipeline Support: Utilize pipes to connect multiple commands, enabling complex data processing workflows.
   
 With these features, Minishell offers a versatile platform for executing commands, managing data streams, and automating tasks, making it a valuable tool for both novice and experienced users.
+
+## How to run
+
+- Open o CLI and run
+
+```bash
+  make run
+```
+- Redirecting I/O in minishell for your custom program:
+```bash
+  ./program < in.txt > out.txt
+```
+- Using Pipes:
+```bash
+  ./program | ./program1 | ./program2
+```
+  
 
